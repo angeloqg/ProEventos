@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
 
@@ -31,12 +33,14 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
   declarations: [
     AppComponent,
       EventosComponent,
-      PalestrantesComponent
+      PalestrantesComponent,
+      NavComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     // Componentes ngx-Bootstrap
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
