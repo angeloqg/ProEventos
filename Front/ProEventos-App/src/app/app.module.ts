@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { TituloComponent } from './shared/titulo/titulo.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { PalestrantesComponent } from './components/Palestrantes/Palestrantes.component';
+import { ContatosComponent } from './components/contatos/contatos.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 // Componentes ngx-Bootstrap (imports)
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,19 +32,30 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { EventoService } from './services/evento.service';
+import { DatePipeFormatPipe } from './helpers/DatePipeFormat.pipe';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+      AppComponent,
+      NavComponent,
+      TituloComponent,
+      DashboardComponent,
       EventosComponent,
       PalestrantesComponent,
-      NavComponent
+      ContatosComponent,
+      PerfilComponent,
+      DatePipeFormatPipe
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+
     // Componentes ngx-Bootstrap
     BrowserAnimationsModule,
     AccordionModule.forRoot(),
@@ -60,8 +75,17 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true
+    }),
+    NgxSpinnerModule,
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  // Injeção de dependência pelo módulo
+  providers: [EventoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

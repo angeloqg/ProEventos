@@ -1,28 +1,41 @@
+import { Lote } from './Lote';
+import { Palestrante } from './Palestrante';
+import { RedeSocial } from './RedeSocial';
+
 export class Evento {
 
-  private EventoId: number;
+  private Id: number;
   private Local: string;
-  private DataEvento: string;
+  private DataEvento?: Date | undefined;
   private Tema: string;
   private QtdPessoas: number;
   private Lote: number;
   private ImagemURL: string;
+  private Telefone: string;
+  private Email: string;
+  private Lotes: Lote[] = [];
+  private RedesSociais: RedeSocial[];
+  private EventosPalestrantes: Palestrante[];
 
   constructor() {
-    this.EventoId = 0;
+    this.Id = 0;
     this.Local = '';
-    this.DataEvento = '';
+    this.DataEvento = new Date();
     this.Tema = '';
     this.QtdPessoas = 0;
     this.Lote = 0;
     this.ImagemURL = '';
+    this.Telefone = '';
+    this.Email = '';
+    this.RedesSociais = [];
+    this.EventosPalestrantes = [];
   }
 
-  public get eventoId(): number {
-    return this.EventoId;
+  public get id(): number {
+    return this.Id;
   }
-  public set eventoId(value: number) {
-    this.EventoId = value;
+  public set id(value: number) {
+    this.Id = value;
   }
 
   public get local(): string {
@@ -32,10 +45,10 @@ export class Evento {
     this.Local = value;
   }
 
-  public get dataEvento(): string {
+  public get dataEvento(): Date | undefined {
     return this.DataEvento;
   }
-  public set dataEvento(value: string) {
+  public set dataEvento(value: Date | undefined) {
     this.DataEvento = value;
   }
 
@@ -65,5 +78,40 @@ export class Evento {
   }
   public set imagemURL(value: string) {
     this.ImagemURL = value;
+  }
+
+  public get telefone(): string {
+    return this.Telefone;
+  }
+  public set telefone(value: string) {
+    this.Telefone = value;
+  }
+
+  public get email(): string {
+    return this.Email;
+  }
+  public set email(value: string) {
+    this.Email = value;
+  }
+
+  public get redesSociais(): RedeSocial[] {
+    return this.RedesSociais;
+  }
+  public set redesSociais(value: RedeSocial[]) {
+    this.RedesSociais = value;
+  }
+
+  public get lotes(): Lote[] {
+    return this.Lotes;
+  }
+  public set lotes(value: Lote[]) {
+    this.Lotes = value;
+  }
+
+  public get eventosPalestrantes(): Palestrante[] {
+    return this.EventosPalestrantes;
+  }
+  public set eventosPalestrantes(value: Palestrante[]) {
+    this.EventosPalestrantes = value;
   }
 }
