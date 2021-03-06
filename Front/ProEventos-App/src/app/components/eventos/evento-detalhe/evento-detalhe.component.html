@@ -1,48 +1,82 @@
 <div class="card rounded class-sm">
 
-    <form>
+    <form [formGroup]="eventoForm">
       <div  class="p-3">
       <div class="form-row">
         <div class="form-group col-md-12">
           <label>Tema</label>
-          <input type="text" class="form-control" placeholder="Insira o tema">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': form.Tema!.errors && (form.Tema!.touched || form.Tema!.dirty)}" formControlName="Tema" placeholder="Insira o tema">
+          <div class="invalid-feedback" *ngIf="form.Tema?.hasError('required')">
+            O tema é obrigatório!
+          </div>
+          <div class="invalid-feedback" *ngIf="form.Tema?.hasError('minlength')">
+            O tema deve ter um mínimo de 4 caracteres!
+          </div>
+          <div class="invalid-feedback" *ngIf="form.Tema?.hasError('maxlength')">
+            O tema deve ter um máximo de 50 caracteres!
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-8">
           <label>Local</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': form.Local!.errors && (form.Local!.touched || form.Local!.dirty)}" formControlName="Local" placeholder="">
+          <div class="invalid-feedback" *ngIf="form.Local?.hasError('required')">
+            O local é obrigatório!
+          </div>
         </div>
         <div class="form-group col-md-4">
           <label>Data e Hora</label>
-          <input type="date" class="form-control" placeholder="">
+          <input type="date" class="form-control" [ngClass]="{'is-invalid': form.DataEvento!.errors && (form.DataEvento!.touched || form.DataEvento!.dirty)}" formControlName="DataEvento" placeholder="">
+          <div class="invalid-feedback" *ngIf="form.DataEvento?.hasError('required')">
+            A data e hora do evento são obrigatórios!
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-2">
           <label>Qtd Pessoas</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': form.QtdPessoas!.errors && (form.QtdPessoas!.touched || form.QtdPessoas!.dirty)}" formControlName="QtdPessoas" placeholder="">
+          <div class="invalid-feedback" *ngIf="form.QtdPessoas?.hasError('required')">
+            A quantidade de pessoas é obrigatória!
+          </div>
+          <div class="invalid-feedback" *ngIf="form.QtdPessoas?.hasError('max')">
+            O limite de quantidade de 120000 pessoas foi atingido!
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label>Telefone</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': form.Telefone!.errors && (form.Telefone!.touched || form.Telefone!.dirty)}" formControlName="Telefone" placeholder="(000) 00000-0000">
+          <div class="invalid-feedback" *ngIf="form.Telefone?.hasError('required')">
+            O telefone é obrigatório!
+          </div>
         </div>
         <div class="form-group col-md-4">
-          <label>Telefone</label>
-          <input type="date" class="form-control" placeholder="(000) 00000-0000">
-        </div>
-        <div class="form-group col-md-6">
           <label>E-mail</label>
-          <input type="email" class="form-control" placeholder="">
+          <input type="email" class="form-control" [ngClass]="{'is-invalid': form.Email!.errors && (form.Email!.touched || form.Email!.dirty)}" formControlName="Email" placeholder="">
+          <div class="invalid-feedback" *ngIf="form.Email?.hasError('required')">
+            O e-mail é obrigatório!
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Imagem</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': form.ImagemURL!.errors && (form.ImagemURL!.touched || form.ImagemURL!.dirty)}" formControlName="ImagemURL" placeholder="imagem">
+          <div class="invalid-feedback" *ngIf="form.ImagemURL?.hasError('required')">
+            A imagem é obrigatório!
+          </div>
         </div>
       </div>
     </div>
-  </form>
-  <div class="card-footer">
-    <div class="d-flex">
-      <button class="btn btn-outline-secondary mr-auto border">
-        Cancelar Confirmação
-      </button>
-      <button class="btn btn-success">
-        <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
-        Salvar Evento
-      </button>
+    <div class="card-footer">
+      <div class="d-flex">
+        <button class="btn btn-outline-secondary mr-auto border">
+          Cancelar Confirmação
+        </button>
+        <button class="btn btn-success" [disabled]="!eventoForm?.valid">
+          <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+          Salvar Evento
+        </button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
