@@ -9,9 +9,14 @@ import { NavComponent } from './shared/nav/nav.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EventosComponent } from './components/eventos/eventos.component';
+import { EventoDetalheComponent } from './components/eventos/evento-detalhe/evento-detalhe.component';
+import { EventoListaComponent } from './components/eventos/evento-lista/evento-lista.component';
 import { PalestrantesComponent } from './components/Palestrantes/Palestrantes.component';
 import { ContatosComponent } from './components/contatos/contatos.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 // Componentes ngx-Bootstrap (imports)
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,9 +39,12 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { EventoService } from './services/evento.service';
+
+// Pipes (import)
 import { DatePipeFormatPipe } from './helpers/DatePipeFormat.pipe';
 
+// Services (import)
+import { EventoService } from './services/evento.service';
 
 @NgModule({
   declarations: [
@@ -45,10 +53,15 @@ import { DatePipeFormatPipe } from './helpers/DatePipeFormat.pipe';
       TituloComponent,
       DashboardComponent,
       EventosComponent,
+      EventoDetalheComponent,
+      EventoListaComponent,
       PalestrantesComponent,
       ContatosComponent,
       PerfilComponent,
-      DatePipeFormatPipe
+      DatePipeFormatPipe,
+      UserComponent,
+      LoginComponent,
+      RegistrationComponent,
    ],
   imports: [
     BrowserModule,

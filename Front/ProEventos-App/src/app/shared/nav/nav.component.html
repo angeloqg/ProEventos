@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="dashboard">ProEventos</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" *ngIf="showMenu()">
+  <div class="container">
+    <a class="navbar-brand" tooltip="ProEventos" routerLink="dashboard"><i class="fa fa-users mb-2"></i></a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav" [collapse]="isCollapsed" [isAnimated]="true">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="eventos">Eventos</a>
+          <a class="nav-link active" aria-current="page" routerLink="eventos/lista">Eventos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="palestrantes">Palestrantes</a>
@@ -24,11 +24,11 @@
           Usuário
         </a>
         <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" style="cursor: pointer;" routerLink="perfil">
+          <a class="dropdown-item" style="cursor: pointer;" routerLink="user/perfil">
             Perfil
           </a>
           <div role="separator" class="divider"></div>
-          <a class="dropdown-item" style="cursor: pointer;" routerLink="">
+          <a class="dropdown-item" style="cursor: pointer;" routerLink="/user/login">
             Sair
           </a>
         </div>
