@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -14,7 +15,8 @@ export class EventoDetalheComponent implements OnInit {
     return this.eventoForm.controls;
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private toastr: ToastrService,) {
     this.eventoForm = this.formBuilder.group({
       Tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       Local: ['', Validators.required],
@@ -26,6 +28,14 @@ export class EventoDetalheComponent implements OnInit {
     });
   }
 
+  public resetForm(): void{
+      this.eventoForm.reset();
+  }
+
   ngOnInit(): void {
+  }
+
+  salvarEvento(): void{
+    this.toastr.success('O evento foi salvo com sucesso!', 'Evento Salvo!');
   }
 }
